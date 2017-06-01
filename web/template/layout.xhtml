@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <f:facet name="first">
+            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+            <title>PrimeFaces</title>
+            <h:outputStylesheet name="./css/materialize.min.css"/>
+            <h:outputStylesheet name="./css/style.css"/>
+            <h:outputScript name="./js/jquery-3.2.1.js"/>
+            <h:outputScript name="./js/materialize.min.js"/>
+        </f:facet>
+    </h:head>
+    <h:body>
+        <header>
+            <h:form>
+                <ul id="slide-out" class="side-nav fixed">
+                    <li><p:commandLink value="home"  class="waves-effect"/></li>
+                <li><p:commandLink value="login" action="login" class="waves-effect" rendered="#{loginTratador.tratador.id == null}"/></li>
+                    <li><p:commandLink value="services" class="waves-effect"/></li>
+                    <li><p:commandLink value="about" class="waves-effect"/></li>
+                    <li><p:commandLink value="sair" action="#{loginTratador.logout}" rendered="#{loginTratador.tratador.id != null}" class="waves-effect"/></li>
+                </ul>
+            </h:form>
+        </header>
+        <main>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m9 offset-m3">
+                        <ui:insert name="content">Content</ui:insert>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </h:body>
+</html>
+

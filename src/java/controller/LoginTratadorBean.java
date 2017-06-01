@@ -38,11 +38,7 @@ public class LoginTratadorBean {
     }
 
     public String logout() {
-        if (this.tratador.getId() != null) {
-            ((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true)).invalidate();
-        }
-
-        this.tratador = new Tratador();
+        ((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true)).invalidate();
         return "home";
     }
 

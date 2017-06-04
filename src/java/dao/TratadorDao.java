@@ -29,13 +29,36 @@ public class TratadorDao {
         this.em = emf.createEntityManager();
     }
 
+    public void save(Tratador object) {
+        em.getTransaction().begin();
+        em.persist(object);
+        em.getTransaction().commit();
+    }
+
+    public void update(Tratador object) {
+        Tratador tratador = em.find(Tratador.class, object.getId());
+        em.getTransaction().begin();
+        em.merge(tratador);
+        em.getTransaction().commit();
+    }
+
+    public Tratador findById(int id) {
+        try {
+            Query q = em.createNamedQuery("Tratador.findById");
+            q.setParameter("id", id);
+            return (Tratador) q.getSingleResult();
+        } catch (NonUniqueResultException | NoResultException ex) {
+            return null;
+        }
+    }
+
     public Tratador Verificalogin(String matricula, String senha) {
         try {
             Query q = em.createQuery("SELECT t FROM Tratador t WHERE t.matricula = :matricula AND t.senha = :senha");
             q.setParameter("matricula", matricula);
             q.setParameter("senha", senha);
-            return (Tratador)q.getSingleResult();
-        }catch(NonUniqueResultException | NoResultException ex){
+            return (Tratador) q.getSingleResult();
+        } catch (NonUniqueResultException | NoResultException ex) {
             return null;
         }
     }

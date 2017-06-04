@@ -39,7 +39,7 @@ public class LoginTratadorBean {
 
     public String logout() {
         ((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true)).invalidate();
-        return "home";
+        return "home?faces-redirect=true";
     }
 
     public Tratador getTratador() {

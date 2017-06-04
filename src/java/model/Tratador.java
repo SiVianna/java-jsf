@@ -66,12 +66,13 @@ public class Tratador implements Serializable {
     @ManyToMany(mappedBy = "tratadorList")
     private List<Rotina> rotinaList;
     @JoinColumn(name = "endereco_id", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false,cascade = CascadeType.PERSIST)
     private Endereco enderecoId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tratadorId")
     private List<Boletim> boletimList;
 
     public Tratador() {
+        this.enderecoId = new Endereco();
     }
 
     public Tratador(Integer id) {

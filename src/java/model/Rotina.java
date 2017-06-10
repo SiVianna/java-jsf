@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -65,6 +66,8 @@ public class Rotina implements Serializable {
     private List<Animal> animalList;
 
     public Rotina() {
+        this.animalList = new ArrayList<>();
+        this.tarefasList = new ArrayList<>();
     }
 
     public Rotina(Integer codigo) {
@@ -152,5 +155,5 @@ public class Rotina implements Serializable {
     public String toString() {
         return "model.Rotina[ codigo=" + codigo + " ]";
     }
-    
+
 }

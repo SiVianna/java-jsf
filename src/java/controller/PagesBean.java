@@ -22,17 +22,21 @@ public class PagesBean {
      */
     public PagesBean() {
     }
-    
-    public String login(){
+
+    public String login() {
         return "login?faces-redirect=true";
     }
-    
-    public String loginVeterinario(){
-         
-       return "loginVeterinario?faces-redirect=true";
+
+    public String loginVeterinario() {
+
+        return "loginVeterinario?faces-redirect=true";
     }
-    
-    public String newAnimal(){
+
+    public String newAnimal() {
         return "animalCadastro?faces-redirect=true";
+    }
+
+    public String newRotinaTarefas() {
+        return "rotinaTarefas?faces-redirect=true";
     }
 }

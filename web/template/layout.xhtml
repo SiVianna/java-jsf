@@ -21,9 +21,8 @@
             <h:form>
                 <ul id="slide-out" class="side-nav fixed">
                     <li><p:commandLink value="home"  class="waves-effect"/></li>
-                <li><p:commandLink value="Cadastrar animal" action="#{pagesBean.newAnimal()}" rendered="#{loginTratador.tratador.id != null}"  class="waves-effect"/></li>
-                <li><p:commandLink value="login" action="#{pagesBean.login()}" class="waves-effect" rendered="#{loginTratador.tratador.id == null}"/></li>
-                    <li><p:commandLink value="services" class="waves-effect"/></li>
+                    <li><p:commandLink value="Cadastrar animal" action="#{pagesBean.newAnimal()}" rendered="#{loginTratador.tratador.id != null}"  class="waves-effect"/></li>
+                    <li><p:commandLink value="Criar Rotina/Tarefas" action="#{pagesBean.newRotinaTarefas()}" class="waves-effect" rendered="#{loginTratador.tratador.id != null}"/></li>
                     <li><p:commandLink value="about" class="waves-effect"/></li>
                     <li><p:commandLink value="sair" action="#{loginTratador.logout}" rendered="#{loginTratador.tratador.id != null}" class="waves-effect"/></li>
                     <li><p:commandLink value="sair" action="#{loginVeterinario.logout}" rendered="#{loginVeterinario.veterinario.id != null}" class="waves-effect"/></li>

@@ -42,7 +42,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Veterinario.findByNome", query = "SELECT v FROM Veterinario v WHERE v.nome = :nome")
     , @NamedQuery(name = "Veterinario.findByCrmv", query = "SELECT v FROM Veterinario v WHERE v.crmv = :crmv")
     , @NamedQuery(name = "Veterinario.findByDataRegistro", query = "SELECT v FROM Veterinario v WHERE v.dataRegistro = :dataRegistro")
-    , @NamedQuery(name = "Veterinario.findByTelefone", query = "SELECT v FROM Veterinario v WHERE v.telefone = :telefone")})
+    , @NamedQuery(name = "Veterinario.findByTelefone", query = "SELECT v FROM Veterinario v WHERE v.telefone = :telefone")
+    , @NamedQuery(name = "Veterinario.findByMatricula", query = "SELECT v FROM Veterinario v WHERE v.matricula = :matricula")
+    , @NamedQuery(name = "Veterinario.findBySenha", query = "SELECT v FROM Veterinario v WHERE v.senha = :senha")})
 public class Veterinario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -66,6 +68,12 @@ public class Veterinario implements Serializable {
     @JoinColumn(name = "endereco_id", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false)
     private Endereco enderecoId;
+    @Basic(optional = false)
+    @Column(nullable = false, length = 45)
+    private String matricula;
+    @Basic(optional = false)
+    @Column(nullable = false, length = 45)
+    private String senha;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "veterinarioId")
     private List<Receita> receitaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "veterinarioId")
@@ -80,11 +88,13 @@ public class Veterinario implements Serializable {
         this.id = id;
     }
 
-    public Veterinario(Integer id, String nome, String crmv, Date dataRegistro) {
+    public Veterinario(Integer id, String nome, String crmv, Date dataRegistro,  String matricula, String senha) {
         this.id = id;
         this.nome = nome;
         this.crmv = crmv;
         this.dataRegistro = dataRegistro;
+        this.matricula = matricula;
+        this.senha = senha;
     }
 
     public Integer getId() {
@@ -133,6 +143,22 @@ public class Veterinario implements Serializable {
 
     public void setEnderecoId(Endereco enderecoId) {
         this.enderecoId = enderecoId;
+    }
+    
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+    
+    public String getSenha() {
+        return senha;
+    }
+    
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     @XmlTransient

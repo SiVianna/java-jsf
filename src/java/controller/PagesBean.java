@@ -27,6 +27,11 @@ public class PagesBean {
         return "login?faces-redirect=true";
     }
     
+    public String loginVeterinario(){
+         
+       return "loginVeterinario?faces-redirect=true";
+    }
+    
     public String newAnimal(){
         return "animalCadastro?faces-redirect=true";
     }

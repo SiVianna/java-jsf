@@ -26,6 +26,7 @@
                     <li><p:commandLink value="services" class="waves-effect"/></li>
                     <li><p:commandLink value="about" class="waves-effect"/></li>
                     <li><p:commandLink value="sair" action="#{loginTratador.logout}" rendered="#{loginTratador.tratador.id != null}" class="waves-effect"/></li>
+                    <li><p:commandLink value="sair" action="#{loginVeterinario.logout}" rendered="#{loginVeterinario.veterinario.id != null}" class="waves-effect"/></li>
                 </ul>
             </h:form>
         </header>

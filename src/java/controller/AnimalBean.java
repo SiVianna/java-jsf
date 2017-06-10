@@ -6,8 +6,10 @@
 package controller;
 
 import dao.AnimalDao;
+import dao.TratadorDao;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import model.Animal;
 
 /**
@@ -25,8 +27,13 @@ public class AnimalBean {
     }
     
     public String store(){
+        
+        LoginTratadorBean lb = (LoginTratadorBean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loginTratador");
+        animal.getTratadorList().add(lb.getTratador());
+        lb.getTratador().getAnimalList().add(animal);
+        TratadorDao.getInstance().update(lb.getTratador());
         AnimalDao.getInstance().save(animal);
-        return "/tratador/home?faces-redirect=true";
+        return "home?faces-redirect=true";
     }
 
     public Animal getAnimal() {

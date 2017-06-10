@@ -1,6 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
+      mlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
@@ -20,8 +21,8 @@
             <h:form>
                 <ul id="slide-out" class="side-nav fixed">
                     <li><p:commandLink value="home"  class="waves-effect"/></li>
-                    <li><p:commandLink value="Cadastrar animal" rendered="#{loginTratador.tratador.id != null}"  class="waves-effect"/></li>
-                    <li><p:commandLink value="login" action="login" class="waves-effect" rendered="#{loginTratador.tratador.id == null}"/></li>
+                <li><p:commandLink value="Cadastrar animal" action="#{pagesBean.newAnimal()}" rendered="#{loginTratador.tratador.id != null}"  class="waves-effect"/></li>
+                <li><p:commandLink value="login" action="#{pagesBean.login()}" class="waves-effect" rendered="#{loginTratador.tratador.id == null}"/></li>
                     <li><p:commandLink value="services" class="waves-effect"/></li>
                     <li><p:commandLink value="about" class="waves-effect"/></li>
                     <li><p:commandLink value="sair" action="#{loginTratador.logout}" rendered="#{loginTratador.tratador.id != null}" class="waves-effect"/></li>

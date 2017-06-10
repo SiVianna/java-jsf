@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -73,6 +74,7 @@ public class Tratador implements Serializable {
 
     public Tratador() {
         this.enderecoId = new Endereco();
+        this.animalList = new ArrayList<>();
     }
 
     public Tratador(Integer id) {

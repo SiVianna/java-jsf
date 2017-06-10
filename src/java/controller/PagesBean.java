@@ -24,7 +24,10 @@ public class PagesBean {
     }
     
     public String login(){
-        
-        return "/tratador/login?faces-redirect=true";
+        return "login?faces-redirect=true";
+    }
+    
+    public String newAnimal(){
+        return "animalCadastro?faces-redirect=true";
     }
 }

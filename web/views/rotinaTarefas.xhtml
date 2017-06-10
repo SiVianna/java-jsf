@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="./../template/layout.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="content">
+        <div class="row">
+            <h:panelGroup rendered="#{rotinaTarefaBean.rotina.codigo == null}" >
+                <h1>Adicionar Rotina</h1>
+                <div class="col m8">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-image">
+                                <div class="row">
+                                    <div class="col m4 offset-m4">
+                                        <p:graphicImage class="icon-svg" name="./img/list.svg" alt="logo"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h:form>
+                                    <p:growl autoUpdate="true"/>
+                                    <div class="input-field">
+                                        <p:outputLabel for="dataVencimento" value="Data de validade" class="active"/>
+                                        <p:calendar id="dataVencimento" value="#{rotinaTarefaBean.rotina.dataValidade}" required="true" requiredMessage="O campo Data de validade é obrigatório"/>
+                                    </div>
+                                    <div class="input-field">
+                                        <h:commandButton value="Salvar" action="#{rotinaTarefaBean.storeRotina()}" class="btn btn-block center-block"/>
+                                    </div>
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:panelGroup>
+        </div>
+        <div class="row">
+            <h:panelGroup>
+                <h1>Adionar Tarefa</h1>
+                <div class="col m8">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-image">
+                                <div class="row">
+                                    <div class="col m4 offset-m4">
+                                        <p:graphicImage id="taks" class="icon-svg" name="./img/plus.svg" alt="logo"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h:form>
+                                    <p:growl autoUpdate="true"/>
+                                    <div class="input-field">
+                                        <p:outputLabel for="nome" value="Descrição" class="active"/>
+                                        <p:inputTextarea id="nome"  value="#{rotinaTarefaBean.tarefa.descricao}" class="materialize-textarea" required="true" requiredMessage="O campo Descrição é obrigatório"/>
+                                    </div>
+                                    <div class="input-field">
+                                        <h:commandButton value="Salvar" action="#{rotinaTarefaBean.storeRotina()}" class="btn btn-block center-block"/>
+                                    </div>
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:panelGroup>
+        </div>
+    </ui:define>
+</ui:composition>
+
+

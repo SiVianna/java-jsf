@@ -77,15 +77,16 @@ public class Animal implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "animalCodigo")
     private List<AgendaConsulta> agendaConsultaList;
     @JoinColumn(name = "boletim_saude_id", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     private BoletimSaude boletimSaudeId;
     @JoinColumn(name = "rotina_codigo", referencedColumnName = "codigo", nullable = false)
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     private Rotina rotinaCodigo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "animalCodigo")
     private List<Boletim> boletimList;
 
     public Animal() {
+        
     }
 
     public Animal(Integer codigo) {

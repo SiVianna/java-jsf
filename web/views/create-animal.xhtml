@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="../template/layout.xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns="http://www.w3.org/1999/xhtml">
+
+    <ui:define name="content">
+        <h:form>
+            <p:growl autoUpdate="true"/>
+            <div class="col m12">
+                <h1>Cadastro Animal</h1>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="input-field">
+                                <p:outputLabel value="Nome:"/>
+                                <p:inputText class="validate" value="#{animalBean.animal.nome}" required="true" requiredMessage="O campo Nome é obrigatório"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col m6">
+                                <p:outputLabel value="Peso:"/>
+                                <p:inputText class="validate" required="true" value="#{animalBean.animal.peso}" requiredMessage="O campo Peso é obrigatório"/>
+                            </div>
+                            <div class="input-field col m6">
+                                <p:outputLabel class="active" value="Data de nascimento:"/>
+                                <p:calendar id="mask" class="validate" required="true" value="#{animalBean.animal.dataNascimento}" pattern="dd-MM-yyyy" mask="true" requiredMessage="O campo Data de nascimento é obrigatório" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field">
+                                <p:outputLabel value="Região de origem "/>
+                                <p:inputText class="validate" value="#{animalBean.animal.regiaoOrigem}"  required="true" requiredMessage="O Região de origem  Número é obrigatório"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field">
+                                <p:outputLabel value="Espécie:"/>
+                                <p:inputText class="validate" value="#{animalBean.animal.especie}"  required="true" requiredMessage="O campo Espécie: é obrigatório"/>
+                            </div>
+                        </div>
+                        <div class="input-field">
+                            <h:commandButton value="Salvar"  action="#{animalBean.store}" class="btn btn-block center-block"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>

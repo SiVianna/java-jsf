@@ -10,10 +10,10 @@
         <f:facet name="first">
             <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
             <title>PrimeFaces</title>
-            <h:outputStylesheet name="./css/materialize.min.css"/>
             <h:outputStylesheet name="./css/style.css"/>
+            <h:outputStylesheet name="./css/materialize.min.css"/>
             <h:outputScript name="./js/jquery-3.2.1.js"/>
-            <h:outputScript name="./js/materialize.min.js"/>
+
         </f:facet>
     </h:head>
     <h:body>
@@ -37,6 +37,12 @@
                     </div>
                 </div>
             </div>
+            <h:outputScript name="./js/materialize.min.js"/>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('select').material_select();
+                });
+            </script>
         </main>
     </h:body>
 </html>

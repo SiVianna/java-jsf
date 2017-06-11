@@ -25,6 +25,12 @@ public class AnimalDao extends GenericDao<Animal> {
         em.persist(object);
         em.getTransaction().commit();
     }
+    
+    public void update(Animal object){
+        em.getTransaction().begin();
+        em.merge(object);
+        em.getTransaction().commit();
+    }
 
     public static AnimalDao getInstance() {
         if (instance == null) {

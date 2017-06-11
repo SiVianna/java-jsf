@@ -30,9 +30,9 @@ public class AnimalBean {
         
         LoginTratadorBean lb = (LoginTratadorBean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loginTratador");
         animal.getTratadorList().add(lb.getTratador());
+        AnimalDao.getInstance().save(animal);
         lb.getTratador().getAnimalList().add(animal);
         TratadorDao.getInstance().update(lb.getTratador());
-        AnimalDao.getInstance().save(animal);
         return "home?faces-redirect=true";
     }
 

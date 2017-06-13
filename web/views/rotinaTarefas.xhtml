@@ -31,6 +31,9 @@
             </h:dataTable>
             <h:panelGroup rendered="#{rotinaTarefaBean.status == 'AddRotina'}" >
                 <h1>Adicionar Rotina</h1>
+                <h:form>
+                    <h:commandButton class="btn"  value="voltar" action="#{rotinaTarefaBean.back()}"/>
+                </h:form>
                 <div class="col m8">
                     <div class="row">
                         <div class="card">

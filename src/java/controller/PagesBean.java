@@ -39,4 +39,8 @@ public class PagesBean {
     public String newRotinaTarefas() {
         return "rotinaTarefas?faces-redirect=true";
     }
+    
+    public String boletimDiario(){
+        return "boletimDiario?faces-redirect=true";
+    }
 }

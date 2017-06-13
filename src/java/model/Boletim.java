@@ -64,6 +64,7 @@ public class Boletim implements Serializable {
     private Tratador tratadorId;
 
     public Boletim() {
+        this.tratadorId = new Tratador();
     }
 
     public Boletim(Integer id) {
@@ -149,5 +150,5 @@ public class Boletim implements Serializable {
     public String toString() {
         return "model.Boletim[ id=" + id + " ]";
     }
-    
+
 }

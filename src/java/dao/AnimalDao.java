@@ -6,6 +6,7 @@
 package dao;
 
 
+import javax.persistence.Query;
 import model.Animal;
 
 /**
@@ -31,6 +32,14 @@ public class AnimalDao extends GenericDao<Animal> {
         em.merge(object);
         em.getTransaction().commit();
     }
+    
+    public Animal findById(int id){
+        Query q = em.createNamedQuery("Animal.findByCodigo");
+        q.setParameter("codigo", id);
+        return (Animal)q.getSingleResult();
+    }
+    
+    
 
     public static AnimalDao getInstance() {
         if (instance == null) {

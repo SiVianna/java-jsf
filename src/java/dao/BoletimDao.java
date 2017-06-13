@@ -5,37 +5,35 @@
  */
 package dao;
 
-import model.Rotina;
+import model.Boletim;
 
 /**
  *
  * @author tiago
  */
-public class RotinaDao extends GenericDao<Rotina> {
+public class BoletimDao extends GenericDao<Boletim>{
+     private static BoletimDao instance;
 
-    private static RotinaDao instance;
-
-    private RotinaDao(){
-        
+    private BoletimDao() {
+        super();
     }
-    
-    public void save(Rotina object){
+
+    public void save(Boletim object) {
         em.getTransaction().begin();
         em.persist(object);
         em.getTransaction().commit();
     }
     
-     public void update(Rotina object){
+    public void update(Boletim object){
         em.getTransaction().begin();
         em.merge(object);
         em.getTransaction().commit();
     }
-    
-    public static RotinaDao getInstance() {
+
+    public static BoletimDao getInstance() {
         if (instance == null) {
-            instance = new RotinaDao();
+            instance = new BoletimDao();
         }
         return instance;
     }
-
 }

@@ -65,12 +65,13 @@ public class RotinaTarefaBean {
         AnimalDao.getInstance().update(animal);
         this.status = Status.Default;
     }
-
+    
+   
     public void storeTarefas() {
         tarefa.setRotinaCodigo(animal.getRotinaCodigo());
+        animal.getRotinaCodigo().getTarefasList().add(tarefa);
         TarefaDao.getInstance().save(tarefa);
         this.status = Status.Default;
-
     }
 
     public Rotina getRotina() {

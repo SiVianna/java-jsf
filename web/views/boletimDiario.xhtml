@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="./../template/layout.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h:form>
+            <h:dataTable value="#{boletimDiarioBean.lstAnimal}" rendered="#{boletimDiarioBean.status == 'Default'}" class="bordered highlight" var="animal">
+                <h:column>
+                    <f:facet name="header">Nome</f:facet>
+                        #{animal.nome}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Boletim</f:facet>
+                    <h:commandLink actionListener="#{boletimDiarioBean.addBoletimAnimal(animal)}" value="adicionar" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Histórico</f:facet>
+                    <h:commandLink actionListener="#{boletimDiarioBean.showBoletinsAnimal(animal)}"  value="visualizar" />
+                </h:column>
+            </h:dataTable>
+        </h:form>
+
+        <h:panelGroup rendered="#{boletimDiarioBean.status == 'Boletim'}">
+            <h1>Boletim</h1>
+            <h:form>
+                <h:commandButton class="btn waves-light" value="Voltar" actionListener="#{boletimDiarioBean.back()}"/>
+            </h:form>
+            <div class="col m8">
+                <div class="row">
+                    <div class="card">
+
+                        <div class="card-image">
+                            <div class="row">
+                                <div class="col m4 offset-m4">
+                                    <p:graphicImage class="icon-svg" name="./img/list.svg" alt="logo"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h:form >
+                                <p:growl autoUpdate="true"/>
+                                <h3>#{boletimDiarioBean.animal.nome}</h3>
+                                <div class="input-field">
+                                    <p:outputLabel for="observacoes" value="Observações" class="active"/>
+                                    <p:inputTextarea id="observacoes"  value="#{boletimDiarioBean.boletimDiario.observacoes}" class="materialize-textarea" required="true" requiredMessage="O campo Descrição é obrigatório"/>
+                                </div>
+                                <div class="input-field">
+                                    <p:outputLabel for="data" value="Data" class="active"/>
+                                    <p:calendar id="data"  value="#{boletimDiarioBean.boletimDiario.data}" class="materialize-textarea" required="true" requiredMessage="O campo data é obrigatório"/>
+                                </div>
+                                <div class="input-field">
+                                    <h:selectOneMenu required="true" value="#{boletimDiarioBean.boletimDiario.estadoAnimal}"  requiredMessage="O campo estado do animal é obrigatório" >
+                                        <f:selectItem itemLabel="estado do animal"/>
+                                        <f:selectItem itemLabel="Saudável" itemValue="saudável"/>
+                                        <f:selectItem itemLabel="Estado alerta" itemValue="estado alerta"/>
+                                        <f:selectItem itemLabel="Doente" itemValue="doente"/>
+                                    </h:selectOneMenu>
+                                </div>
+                                <div class="input-field">
+                                    <h:commandButton  value="Salvar" actionListener="#{boletimDiarioBean.store()}"  class="btn btn-block center-block"/>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h:panelGroup>
+        <h:panelGroup rendered="#{boletimDiarioBean.status == 'ShowBoletins'}">
+            <h1>Histórico</h1>
+            <h:form>
+                <h:commandButton class="btn waves-light" value="Voltar" actionListener="#{boletimDiarioBean.back()}"/>
+            </h:form>
+            <h:dataTable value="#{boletimDiarioBean.animal.boletimList}"  class="bordered highlight" var="boletim">
+                <h:column>
+                    <f:facet name="header">Animal</f:facet>
+                        #{boletim.animalCodigo.nome}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Data</f:facet>
+                    <p:outputLabel value="#{boletim.data}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </p:outputLabel>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Estado do animal</f:facet>
+                        #{boletim.estadoAnimal}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Observações</f:facet>
+                        #{boletim.observacoes}
+                </h:column>
+            </h:dataTable>
+        </h:panelGroup>
+
+    </ui:define>
+</ui:composition>

@@ -7,17 +7,11 @@ package controller;
 
 import dao.AnimalDao;
 import dao.TratadorDao;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import model.Animal;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.primefaces.model.UploadedFile;
 
 /**
@@ -42,7 +36,13 @@ public class AnimalBean {
         AnimalDao.getInstance().save(animal);
         lb.getTratador().getAnimalList().add(animal);
         TratadorDao.getInstance().update(lb.getTratador());
-        return "home?faces-redirect=true";
+        showMessage();
+        return "homeLogado?faces-redirect=true";
+    }
+    
+    public void showMessage() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "Animal cadastrado com sucesso!!!!"));
     }
 
     public Animal getAnimal() {

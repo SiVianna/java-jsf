@@ -69,6 +69,7 @@ public class AgendaConsulta implements Serializable {
     private List<Consulta> consultaList;
 
     public AgendaConsulta() {
+        this.veterinarioId = new Veterinario();
     }
 
     public AgendaConsulta(Integer id) {

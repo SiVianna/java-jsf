@@ -45,7 +45,7 @@ public class VeterinarioDao {
 
     public Veterinario findById(int id) {
         try {
-            Query q = em.createNamedQuery("Tratador.findById");
+            Query q = em.createNamedQuery("Veterinario.findById");
             q.setParameter("id", id);
             return (Veterinario) q.getSingleResult();
         } catch (NonUniqueResultException | NoResultException ex) {

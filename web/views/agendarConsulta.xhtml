@@ -24,7 +24,7 @@
                 </h:column>
             </h:dataTable>
         </h:form>
-
+        <p:growl id="growl" autoUpdate="true" sticky="true"/>
         <h:panelGroup rendered="#{agendaBean.status == 'agendar'}">
             <h1>Agendamento</h1>
             <h:form>
@@ -43,7 +43,6 @@
                         </div>
                         <div class="card-content">
                             <h:form >
-                                <p:growl autoUpdate="true"/>
                                 <h3>#{agendaBean.animal.nome}</h3>
                                 <div class="input-field">
                                     <p:outputLabel for="dataAgenda" value="Data" class="active"/>
@@ -54,13 +53,20 @@
                                     <p:inputText id="horarioAgendamento"  value="#{agendaBean.agendaConsulta.horarioAgendamento}" class="materialize-textarea" required="true" requiredMessage="O campo hora é obrigatório"/>
                                 </div>
                                 <div class="input-field">
-                                    <h:selectOneMenu required="true" value="#{agendaBean.agendaConsulta.veterinarioId}" requiredMessage="O campo veterinario é obrigatório" >
+                                    <h:selectOneMenu required="true" value="#{agendaBean.agendaConsulta.veterinarioId.id}" requiredMessage="O campo veterinario é obrigatório" >
                                         <f:selectItem itemLabel="Veterinário" itemValue="" />
                                         <f:selectItems value="#{agendaBean.lstVeterinario}" var="v" itemValue="#{v.id}" itemLabel="#{v.nome}"/>
                                     </h:selectOneMenu>
                                 </div>
                                 <div class="input-field">
-                                    <h:commandButton  value="Salvar" actionListener="#"  class="btn btn-block center-block"/>
+                                    <h:selectOneMenu required="true" value="#{agendaBean.agendaConsulta.status}"  requiredMessage="O campo estado do animal é obrigatório" >
+                                        <f:selectItem itemLabel="status"/>
+                                        <f:selectItem itemLabel="normal" itemValue="normal"/>
+                                        <f:selectItem itemLabel="Estado alerta" itemValue="estado alerta"/>
+                                    </h:selectOneMenu>
+                                </div>
+                                <div class="input-field">
+                                    <h:commandButton  value="Salvar" actionListener="#{agendaBean.saveAgendamento()}"  class="btn btn-block center-block"/>
                                 </div>
                             </h:form>
                         </div>

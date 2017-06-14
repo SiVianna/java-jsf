@@ -43,4 +43,7 @@ public class PagesBean {
     public String boletimDiario(){
         return "boletimDiario?faces-redirect=true";
     }
+    public String agendarConsulta(){
+        return "agendarConsulta?faces-redirect=true";
+    }
 }

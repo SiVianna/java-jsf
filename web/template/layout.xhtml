@@ -24,6 +24,7 @@
                     <li><p:commandLink value="Cadastrar animal" action="#{pagesBean.newAnimal()}" rendered="#{loginTratador.tratador.id != null}"  class="waves-effect"/></li>
                     <li><p:commandLink value="Criar Rotina/Tarefas" action="#{pagesBean.newRotinaTarefas()}" class="waves-effect" rendered="#{loginTratador.tratador.id != null}"/></li>
                     <li><p:commandLink value="Boletim diário" action="#{pagesBean.boletimDiario()}" class="waves-effect" rendered="#{loginTratador.tratador.id != null}"/></li>
+                    <li><p:commandLink value="Agendar Consulta" action="#{pagesBean.agendarConsulta()}" rendered="#{loginTratador.tratador.id != null}" class="waves-effect"/></li>
                     <li><p:commandLink value="sair" action="#{loginTratador.logout}" rendered="#{loginTratador.tratador.id != null}" class="waves-effect"/></li>
                     <li><p:commandLink value="sair" action="#{loginVeterinario.logout}" rendered="#{loginVeterinario.veterinario.id != null}" class="waves-effect"/></li>
                 </ul>

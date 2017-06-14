@@ -5,6 +5,7 @@
  */
 package dao;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
@@ -51,7 +52,14 @@ public class VeterinarioDao {
             return null;
         }
     }
+    
+    public List<Veterinario> findAll(){
+    
+        Query q = em.createQuery("SELECT v FROM Veterinario v");
 
+        return q.getResultList();
+    }
+    
     public Veterinario Verificalogin(String matricula, String senha) {
         try {
             Query q = em.createQuery("SELECT v FROM Veterinario v WHERE v.matricula = :matricula AND v.senha = :senha");

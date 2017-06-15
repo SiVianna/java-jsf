@@ -13,20 +13,34 @@
             <h:outputStylesheet name="./css/style.css"/>
             <h:outputStylesheet name="./css/materialize.min.css"/>
             <h:outputScript name="./js/jquery-3.2.1.js"/>
-            
+
         </f:facet>
     </h:head>
     <h:body>
         <header>
             <h:form>
                 <ul id="slide-out" class="side-nav fixed">
-                    <li><p:commandLink value="home"  class="waves-effect"/></li>
-                    <li><p:commandLink value="Cadastrar animal" action="#{pagesBean.newAnimal()}" rendered="#{loginTratador.tratador.id != null}"  class="waves-effect"/></li>
-                    <li><p:commandLink value="Criar Rotina/Tarefas" action="#{pagesBean.newRotinaTarefas()}" class="waves-effect" rendered="#{loginTratador.tratador.id != null}"/></li>
-                    <li><p:commandLink value="Boletim diário" action="#{pagesBean.boletimDiario()}" class="waves-effect" rendered="#{loginTratador.tratador.id != null}"/></li>
-                    <li><p:commandLink value="Agendar Consulta" action="#{pagesBean.agendarConsulta()}" rendered="#{loginTratador.tratador.id != null}" class="waves-effect"/></li>
-                    <li><p:commandLink value="sair" action="#{loginTratador.logout}" rendered="#{loginTratador.tratador.id != null}" class="waves-effect"/></li>
-                    <li><p:commandLink value="sair" action="#{loginVeterinario.logout}" rendered="#{loginVeterinario.veterinario.id != null}" class="waves-effect"/></li>
+                    <h:panelGroup>
+                        <li><p:commandLink value="home"  class="waves-effect"/></li>
+                    </h:panelGroup>
+                    <h:panelGroup rendered="#{loginTratador.tratador.id != null}">
+                        <li><p:commandLink value="Cadastrar animal" action="#{pagesBean.newAnimal()}"   class="waves-effect"/></li>
+                    </h:panelGroup>
+                    <h:panelGroup rendered="#{loginTratador.tratador.id != null}">
+                        <li><p:commandLink value="Criar Rotina/Tarefas" action="#{pagesBean.newRotinaTarefas()}" class="waves-effect" /></li>
+                    </h:panelGroup>
+                    <h:panelGroup rendered="#{loginTratador.tratador.id != null}">
+                        <li><p:commandLink value="Boletim diário" action="#{pagesBean.boletimDiario()}" class="waves-effect" /></li>
+                    </h:panelGroup>
+                    <h:panelGroup rendered="#{loginTratador.tratador.id != null}">
+                        <li><p:commandLink value="Agendar Consulta" action="#{pagesBean.agendarConsulta()}"  class="waves-effect"/></li>
+                    </h:panelGroup>
+                    <h:panelGroup rendered="#{loginTratador.tratador.id != null}">
+                        <li><p:commandLink value="sair" action="#{loginTratador.logout}"  class="waves-effect"/></li>
+                    </h:panelGroup>
+                    <h:panelGroup rendered="#{loginVeterinario.veterinario.id != null}">
+                        <li><p:commandLink value="sair" action="#{loginVeterinario.logout}"  class="waves-effect"/></li>
+                    </h:panelGroup>
                 </ul>
             </h:form>
         </header>

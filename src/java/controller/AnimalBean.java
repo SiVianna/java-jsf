@@ -12,7 +12,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import model.Animal;
-import org.primefaces.model.UploadedFile;
+
 
 /**
  *
@@ -23,7 +23,6 @@ import org.primefaces.model.UploadedFile;
 public class AnimalBean {
 
     private Animal animal;
-    private UploadedFile file;
 
     public AnimalBean() {
         this.animal = new Animal();
@@ -51,14 +50,6 @@ public class AnimalBean {
 
     public void setAnimal(Animal animal) {
         this.animal = animal;
-    }
-
-    public UploadedFile getFile() {
-        return file;
-    }
-
-    public void setFile(UploadedFile file) {
-        this.file = file;
     }
 
 }

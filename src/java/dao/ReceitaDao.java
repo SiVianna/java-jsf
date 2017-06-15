@@ -31,7 +31,7 @@ public class ReceitaDao extends GenericDao<Receita> {
         em.merge(object);
         em.getTransaction().commit();
     }
-
+    
     public static ReceitaDao getInstance() {
         if (instance == null) {
             instance = new ReceitaDao();

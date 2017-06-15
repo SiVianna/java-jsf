@@ -5,6 +5,8 @@
  */
 package dao;
 
+import java.util.List;
+import javax.persistence.Query;
 import model.AgendaConsulta;
 
 /**
@@ -23,6 +25,12 @@ public class AgendaDao extends GenericDao<AgendaConsulta> {
         em.getTransaction().begin();
         em.persist(object);
         em.getTransaction().commit();
+    }
+
+    public List<AgendaConsulta> findByVeterinario(int id) {
+        Query q = em.createQuery("SELECT a FROM AgendaConsulta a WHERE a.veterinarioId.id = :id");
+        q.setParameter("id", id);
+        return q.getResultList();
     }
 
     public static AgendaDao getInstance() {

@@ -13,3 +13,8 @@ and open the template in the editor.
 li{
     border-bottom: 1px solid gainsboro;
 }
+.agenda_card li{
+    color: black;
+    border-bottom: none;
+    font-family: arial;
+}

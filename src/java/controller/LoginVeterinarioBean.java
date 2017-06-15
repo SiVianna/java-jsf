@@ -32,9 +32,9 @@ public class LoginVeterinarioBean {
         if (veterinario == null) {
             this.veterinario = new Veterinario();
             FacesContext.getCurrentInstance().addMessage("Aviso", new FacesMessage("Login ou Senha Incorreta!!!"));
-            return "loginVeterinario";
+            return "loginVeterinario?faces-redirect=true";
         }
-        return "homeLogadoVeterinario";
+        return "veterinario_consultas?faces-redirect=true";
     }
 
     public String logout() {

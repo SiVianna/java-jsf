@@ -17,16 +17,12 @@ import model.Tratador;
  *
  * @author tiago
  */
-public class TratadorDao {
-
-    EntityManagerFactory emf;
-    EntityManager em;
+public class TratadorDao extends GenericDao<Tratador> {
 
     private static TratadorDao instance;
 
     private TratadorDao() {
-        this.emf = Persistence.createEntityManagerFactory("ZooPU");
-        this.em = emf.createEntityManager();
+
     }
 
     public void save(Tratador object) {

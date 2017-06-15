@@ -18,16 +18,12 @@ import model.Veterinario;
  *
  * @author Guitar Jr
  */
-public class VeterinarioDao {
-    
-    EntityManagerFactory emf;
-    EntityManager em;
+public class VeterinarioDao extends GenericDao<Veterinario> {
 
     private static VeterinarioDao instance;
 
     private VeterinarioDao() {
-        this.emf = Persistence.createEntityManagerFactory("ZooPU");
-        this.em = emf.createEntityManager();
+
     }
 
     public void save(Veterinario object) {
@@ -52,14 +48,14 @@ public class VeterinarioDao {
             return null;
         }
     }
-    
-    public List<Veterinario> findAll(){
-    
+
+    public List<Veterinario> findAll() {
+
         Query q = em.createQuery("SELECT v FROM Veterinario v");
 
         return q.getResultList();
     }
-    
+
     public Veterinario Verificalogin(String matricula, String senha) {
         try {
             Query q = em.createQuery("SELECT v FROM Veterinario v WHERE v.matricula = :matricula AND v.senha = :senha");
@@ -77,7 +73,4 @@ public class VeterinarioDao {
         }
         return instance;
     }
-    
-    
-    
 }

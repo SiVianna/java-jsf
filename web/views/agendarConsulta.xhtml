@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="input-field">
                                     <p:outputLabel for="horarioAgendamento" value="Horário" class="active"/>
-                                    <p:inputText id="horarioAgendamento"  value="#{agendaBean.agendaConsulta.horarioAgendamento}" class="materialize-textarea" required="true" requiredMessage="O campo hora é obrigatório"/>
+                                    <p:inputMask  mask="99:99" id="horarioAgendamento"   value="#{agendaBean.agendaConsulta.horarioAgendamento}" class="materialize-textarea" required="true" requiredMessage="O campo hora é obrigatório"/>
                                 </div>
                                 <div class="input-field">
                                     <h:selectOneMenu required="true" value="#{agendaBean.agendaConsulta.veterinarioId.id}" requiredMessage="O campo veterinario é obrigatório" >

@@ -11,6 +11,10 @@
         <h:form>
             <h:dataTable value="#{boletimDiarioBean.lstAnimal}" rendered="#{boletimDiarioBean.status == 'Default'}" class="bordered highlight" var="animal">
                 <h:column>
+                    <f:facet name="header">Código</f:facet>
+                        #{animal.codigo}
+                </h:column>
+                <h:column>
                     <f:facet name="header">Nome</f:facet>
                         #{animal.nome}
                 </h:column>
@@ -48,10 +52,6 @@
                                 <div class="input-field">
                                     <p:outputLabel for="observacoes" value="Observações" class="active"/>
                                     <p:inputTextarea id="observacoes"  value="#{boletimDiarioBean.boletimDiario.observacoes}" class="materialize-textarea" required="true" requiredMessage="O campo Descrição é obrigatório"/>
-                                </div>
-                                <div class="input-field">
-                                    <p:outputLabel for="data" value="Data" class="active"/>
-                                    <p:calendar id="data"  value="#{boletimDiarioBean.boletimDiario.data}" class="materialize-textarea" required="true" requiredMessage="O campo data é obrigatório"/>
                                 </div>
                                 <div class="input-field">
                                     <h:selectOneMenu required="true" value="#{boletimDiarioBean.boletimDiario.estadoAnimal}"  requiredMessage="O campo estado do animal é obrigatório" >

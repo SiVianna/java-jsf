@@ -9,6 +9,7 @@ import dao.AgendaDao;
 import dao.AnimalDao;
 import dao.VeterinarioDao;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -29,6 +30,7 @@ public class agendaBean {
     private AgendaConsulta agendaConsulta;
     private List<Animal> lstAnimal;
     private List<Veterinario> lstVeterinario;
+    private List<AgendaConsulta>lstAgendaConsultas;
     private Animal animal;
     private Veterinario veterinario;
     private Status status;
@@ -43,6 +45,7 @@ public class agendaBean {
         this.animal = new Animal();
         this.veterinario = new Veterinario();
         this.lstVeterinario = VeterinarioDao.getInstance().findAll();
+        this.lstAgendaConsultas = new ArrayList<>();
         this.status = Status.Default;
     }
 
@@ -55,8 +58,14 @@ public class agendaBean {
         this.veterinario = VeterinarioDao.getInstance().findById(veterinario.getId());
         this.status = Status.ShowAgendaConsulta;
     }
+    
+    public void listaAgendamentoConsultas(Animal animal){
+        this.lstAgendaConsultas = animal.getAgendaConsultaList();
+        this.status = Status.ShowAgendamentos;
+    }
 
     public void addAgendaConsulta(Animal animal) {
+        this.agendaConsulta = new AgendaConsulta();
         this.animal = animal;
         this.status = Status.agendar;
     }
@@ -69,6 +78,7 @@ public class agendaBean {
         this.agendaConsulta.setAnimalCodigo(animal);
         this.agendaConsulta.setVeterinarioId(VeterinarioDao.getInstance().findById(agendaConsulta.getVeterinarioId().getId()));
         AgendaDao.getInstance().save(agendaConsulta);
+        this.animal.getAgendaConsultaList().add(agendaConsulta);
         showMessage();
         this.status = Status.Default;
     }
@@ -125,5 +135,15 @@ public class agendaBean {
     public void setVeterinario(Veterinario veterinario) {
         this.veterinario = veterinario;
     }
+
+    public List<AgendaConsulta> getLstAgendaConsultas() {
+        return lstAgendaConsultas;
+    }
+
+    public void setLstAgendaConsultas(List<AgendaConsulta> lstAgendaConsultas) {
+        this.lstAgendaConsultas = lstAgendaConsultas;
+    }
+    
+    
 
 }

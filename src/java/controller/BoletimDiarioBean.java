@@ -6,6 +6,7 @@
 package controller;
 
 import dao.AnimalDao;
+import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -39,6 +40,7 @@ public class BoletimDiarioBean {
 
     public void store() {
         boletimDiario.setAnimalCodigo(animal);
+        boletimDiario.setData(new Date());
         boletimDiario.setTratadorId(tratador);
         animal.getBoletimList().add(boletimDiario);
         AnimalDao.getInstance().update(animal);

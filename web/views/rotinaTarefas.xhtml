@@ -11,6 +11,10 @@
         <div class="row">
             <h:dataTable value="#{rotinaTarefaBean.lstAnimais}" rendered="#{rotinaTarefaBean.status == 'Default'}" class="bordered highlight" var="animal">
                 <h:column>
+                    <f:facet name="header">Código</f:facet>
+                        #{animal.codigo}
+                </h:column>
+                <h:column>
                     <f:facet name="header">Nome</f:facet>
                         #{animal.nome}
                 </h:column>

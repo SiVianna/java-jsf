@@ -5,12 +5,15 @@
  */
 package controller;
 
+
 import dao.AnimalDao;
 import dao.TratadorDao;
+import java.io.IOException;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+
 import model.Animal;
 
 
@@ -38,6 +41,8 @@ public class AnimalBean {
         showMessage();
         return "homeLogado?faces-redirect=true";
     }
+    
+    
     
     public void showMessage() {
         FacesContext context = FacesContext.getCurrentInstance();

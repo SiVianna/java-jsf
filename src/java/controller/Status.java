@@ -10,5 +10,5 @@ package controller;
  * @author tiago
  */
 public enum Status {
-    AddRotina,AddTarefa,Boletim,ShowRotina,ShowBoletins,Visualizar,Default,ShowAgendaConsulta,agendar,Consultar;
+    AddRotina,AddTarefa,Boletim,ShowRotina,ShowBoletins,Visualizar,Default,ShowAgendaConsulta,ShowAgendamentos,agendar,Consultar;
 }

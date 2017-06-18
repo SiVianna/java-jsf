@@ -21,44 +21,31 @@
                                     </ul>
                                 </div>
                                 <div class="card-action">
-                                    <p:commandLink value="Consultar" action="#{consultaBean.consultar(agenda)}" class="waves-effect" />
+                                    <h:commandLink value="Consultar" action="#{consultaBean.consultar(agenda)}" class="waves-effect" />
                                 </div>
                             </div>
                         </div>
                      </h:form>
                   </p:repeat>
-                <h:form rendered="#{consultaBean.status == 'Consultar'}" >
-                <div class="col m8">
-                    <h1>Consulta </h1>
-                <div class="row">
-                    <div class="card">
-                        <div class="card-image">
-                            <div class="row">
-                                <div class="col m4 offset-m4">
-                                    <p:graphicImage class="icon-svg" name="./img/nota.svg"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <h:form>
+                <div class="card-content">
+                            <h:form rendered="#{consultaBean.status == 'Consultar'}">
+                                <h1>Consulta</h1>
                                 <p:growl autoUpdate="true"/>
                                 <div class="input-field">
-                                    <p:outputLabel for="data_atendimento" value="Data de Atendimento"/>
-                                    <p:calendar id="data_atendimento" value="#" required="true" requiredMessage="O campo Data de Atendimento é obrigatório"/>
+                                    <p:outputLabel for="data_atendimento" value="Data do atendimento"/>
+                                    <p:calendar id="data_atendimento" value="#{consultaBean.consulta.dataAtendimento}" required="true" requiredMessage="O campo data envio é obrigatório"/>
                                 </div>
                                 <div class="input-field">
                                     <p:outputLabel for="hora_atendimento" value="Hora do atendimento"/>
-                                    <p:inputText id="obs" value="#" required="true" requiredMessage="O campo Hora do atendimento é obrigatório"/>
+                                    <p:inputMask  mask="99:99" id="hora_atendimento"   value="#{consultaBean.consulta.horaAtendimento}" class="materialize-textarea" required="true" requiredMessage="O campo hora é obrigatório"/>
                                 </div>
-                                 <p:inputText id="agenda_consulta_id" value="#" required="true"/>
                                 <div class="input-field">
-                                    <h:commandButton value="Salvar" action="#" class="btn btn-block center-block"/>
+                                    <h:inputHidden id="agenda_consulta_id" value="#" required="true"/>
                                 </div>
-                            </h:form>
-                        </div>
+                                <div class="input-field">
+                                    <h:commandButton value="Salvar" action="#{consultaBean.store}" class="btn btn-block center-block"/>
+                                </div>
+                        </h:form>
                     </div>
-                </div>
-            </div>
-        </h:form>
     </ui:define>
     </ui:composition>

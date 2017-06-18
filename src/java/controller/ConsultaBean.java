@@ -6,12 +6,14 @@
 package controller;
 
 import dao.AgendaDao;
+import dao.ConsultaDao;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import model.AgendaConsulta;
 import model.Animal;
+import model.Consulta;
 import model.Veterinario;
 
 /**
@@ -27,6 +29,7 @@ public class ConsultaBean {
     private AgendaConsulta agendaConsulta;
     private List<AgendaConsulta> lstAgenda;
     private Veterinario veterinario;
+    private Consulta consulta;
     
     public ConsultaBean() {
         LoginVeterinarioBean lb = (LoginVeterinarioBean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loginVeterinario");
@@ -35,6 +38,13 @@ public class ConsultaBean {
         this.animal = new Animal();
         this.agendaConsulta = new AgendaConsulta();
         this.status = Status.Default;
+        this.consulta = new Consulta();
+    }
+    
+    public String store(){
+        consulta.setAgendaConsultaId(agendaConsulta);
+        ConsultaDao.getInstance().save(consulta);
+        return "veterinario_consultas?faces-redirect=true";
     }
 
      public void consultar(AgendaConsulta agendaConsulta ) {
@@ -81,6 +91,14 @@ public class ConsultaBean {
 
     public void setAgendaConsulta(AgendaConsulta agendaConsulta) {
         this.agendaConsulta = agendaConsulta;
+    }
+
+    public Consulta getConsulta() {
+        return consulta;
+    }
+
+    public void setConsulta(Consulta consulta) {
+        this.consulta = consulta;
     }
     
     
